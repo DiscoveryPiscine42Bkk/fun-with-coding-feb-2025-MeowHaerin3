@@ -3,47 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Table</title>
+    <title>tab</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body, html {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
         table {
-            width: 100%;
-            height: 100%;
             border-collapse: collapse;
+            width: 100%;
+            
         }
-        td {
+        td{
             width: 50%;
-            text-align: center;
-            font-size: 4vw; /* Responsive text size */
-            font-weight: bold;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .box1 {
-            background-color: #3498db;
-        }
-        .box2 {
-            background-color: #e74c3c;
+            height: 20vh;
         }
     </style>
 </head>
 <body>
-    <table border="1">
+    <table border="2">
         <tr>
-            <td class="box1">This is Box 1</td>
-            <td class="box2">This is Box 2</td>
+            <td style="background-color: aqua;">This is Box 1</td>
+            <td style="background-color: blueviolet;">This is Box 2</td>
         </tr>
     </table>
 </body>
