@@ -31,68 +31,59 @@
 
     <script>
         const ballon = document.querySelector('.ballon');
-        let shrink_interval = null;
+        let shrinkInterval = null;
 
-        function reset_size() {
-            ballon.style.backgroundColor = "red"
-            ballon.style.height = "200px"
-            ballon.style.width = "200px"
+        function resetSize() {
+            ballon.style.backgroundColor = "red";
+            ballon.style.height = "200px";
+            ballon.style.width = "200px";
+        }
+
+        function setRangeColor(size) {
+            if (size > 370) {
+                ballon.style.backgroundColor = "blue";
+            } else if (size > 300) {
+                ballon.style.backgroundColor = "green";
+            } else {
+                ballon.style.backgroundColor = "red";
+            }
         }
 
         ballon.addEventListener("click", function() {
-
-            if (shrink_interval !== null) {
-                clearInterval(shrink_interval);
-                shrink_interval = null;
+            
+            if (shrinkInterval !== null) {
+                clearInterval(shrinkInterval);
+                shrinkInterval = null;
             }
 
-            let current_size = parseInt(window.getComputedStyle(ballon).height);
-            if (current_size < 420) {
-
-                let new_size = current_size + 10
-                ballon.style.height = new_size + "px";
-                ballon.style.width = new_size + "px";
-
-                if (current_size >= 370) {
-                    ballon.style.backgroundColor = "blue"
-                }
-                else if (current_size >= 320) {
-                    ballon.style.backgroundColor = "green"
-                }
+            let currentSize = parseInt(window.getComputedStyle(ballon).height);
+            if (currentSize < 420) {
+                let newSize = currentSize + 10;
+                ballon.style.height = newSize + "px";
+                ballon.style.width = newSize + "px";
+                setRangeColor(newSize);
+            } else {
+                resetSize();
             }
-            else {
-                reset_size()
-            }
-
         });
 
         ballon.addEventListener("mouseleave", function() {
             
-            if (shrink_interval !== null) return;
+            if (shrinkInterval !== null) return;
 
-            
-            shrink_interval = setInterval(function() {
-
-                let current_size = parseInt(window.getComputedStyle(ballon).height);
-                if (current_size >= 200) {
-
-                    let new_size = current_size - 5;
-                    ballon.style.height = new_size + "px";
-                    ballon.style.width = new_size + "px";
-
-                    if (new_size > 370) {
-                        ballon.style.backgroundColor = "blue";
-                    } else if (new_size > 320) {
-                        ballon.style.backgroundColor = "green";
-                    } else {
-                        ballon.style.backgroundColor = "red";
-                    }
+            shrinkInterval = setInterval(function() {
+                let currentSize = parseInt(window.getComputedStyle(ballon).height);
+                if (currentSize > 200) {
+                    let newSize = currentSize - 5;
+                    ballon.style.height = newSize + "px";
+                    ballon.style.width = newSize + "px";
+                    setRangeColor(newSize);
                 } else {
-                    reset_size();
-                    clearInterval(shrink_interval);
-                    shrink_interval = null;
+                    resetSize();
+                    clearInterval(shrinkInterval);
+                    shrinkInterval = null;
                 }
-            });
+            }, 30);
         });
 
     </script>
