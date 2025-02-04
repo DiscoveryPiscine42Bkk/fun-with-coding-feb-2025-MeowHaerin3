@@ -47,7 +47,7 @@ body {
 
 .text-section {
     margin: 15px 0;
-    text-align: center; /* Removed unnecessary flex */
+    text-align: center;
 }
 
 .text-section table {
