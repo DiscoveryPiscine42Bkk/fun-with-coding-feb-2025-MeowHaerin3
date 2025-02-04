@@ -5,7 +5,6 @@ body, html {
     height: 100%;
 }
 
-/* Parallax Section */
 .parallax {
     position: relative;
     height: 100vh;
@@ -19,16 +18,18 @@ body, html {
     text-align: center;
 }
 
-/* First Background Image */
+
 .parallax-1 {
-    background-image: url('https://source.unsplash.com/1600x900/?nature,water');
+    background-image: url('https://i.redd.it/5mqp7trvxov51.jpg');
 }
 .parallax-1 p,
-.parallax-2 p{
+.parallax-2 p,
+.text-section{
     font-size: small;
-    color: #000;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-/* Black Block Section */
+
 .text-section {
     background-color: black;
     color: white;
@@ -36,8 +37,8 @@ body, html {
     padding: 200px;
 }
 
-/* Second Background Image */
+
 .parallax-2 {
-    background-image: url('https://source.unsplash.com/1600x900/?mountains,sky');
+    background-image: url('https://wallpapercave.com/wp/wp11876726.jpg');
 }
 
