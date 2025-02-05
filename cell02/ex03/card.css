@@ -40,6 +40,7 @@ nav {
     height: 100%;
     object-fit: cover;
 }
+
 table {
     border-collapse: collapse;
 }
@@ -75,8 +76,8 @@ tbody {
 }
 
 .text-section td img {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     object-fit: cover;
     border-radius: 5px;
     padding: 3px;
@@ -92,7 +93,6 @@ tbody {
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 .footer:hover {
