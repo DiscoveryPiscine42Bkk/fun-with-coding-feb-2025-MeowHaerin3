@@ -26,7 +26,7 @@ nav {
 
 .card {
     background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     text-align: center;
     width: auto;
     max-width: 300px;
@@ -66,7 +66,7 @@ tbody {
     padding: 10px;
 }
 .text-section table tr:nth-child(1) td {
-    font-size: 30px;
+    font-size: 32px;
     font-weight: bold;
     padding: 15px;
 }
@@ -80,29 +80,35 @@ tbody {
 }
 
 .text-section td img {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     object-fit: cover;
     border-radius: 5px;
     padding: 3px;
-}
-
-.footer {
-    margin-top: 20px;
-    background-color: rgb(43,189,226);
-    
-    text-align: center;
     cursor: pointer;
 }
 
+.footer {
+    width: 100%;
+    height: 50px;
+    background-color: rgb(43, 189, 226);
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+}
+
+.footer:hover {
+    background-color: rgb(18, 29, 106);
+    transition: all 0.3s ease-in;
+}
+
 .footer .contact-btn {
-    display: inline-block;
-    background-color: rgb(43,189,226);
     color: #fff;
     font-size: 18px;
     text-decoration: none;
-    padding: 10px 20px;
-    text-align: center;
-    
 }
+
 
