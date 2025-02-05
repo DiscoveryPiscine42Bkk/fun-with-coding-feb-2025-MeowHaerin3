@@ -18,11 +18,6 @@ nav {
     margin-bottom: 30px;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .card {
     background-color: white;
@@ -38,7 +33,6 @@ nav {
 .img {
     width: 100%;
     height: 100%;
-    margin-bottom: 15px;
 }
 .img img {
     display: block;
@@ -55,7 +49,7 @@ tbody {
 
 .text-section {
     text-align: center;
-    
+    margin: 20px 0 20px 0;
 }
 .text-section table {
     border-collapse: collapse;
@@ -64,11 +58,12 @@ tbody {
 }
 .text-section td {
     padding: 10px;
+    
 }
 .text-section table tr:nth-child(1) td {
     font-size: 32px;
     font-weight: bold;
-    padding: 15px;
+    
 }
 .text-section table tr:nth-child(2) td {
     font-size: 16px;
@@ -97,7 +92,7 @@ tbody {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: auto;
+    
 }
 
 .footer:hover {
@@ -109,6 +104,7 @@ tbody {
     color: #fff;
     font-size: 18px;
     text-decoration: none;
+    padding: 20px;
 }
 
 
