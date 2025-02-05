@@ -8,7 +8,6 @@
         * {
             margin: 0;
             padding: 0;
-            height: 100%;
         }
         body {
             display: flex;
@@ -16,76 +15,51 @@
             align-items: center;
             height: 100vh;
             text-align: center;
+            background-color: #f0f0f0;
         }
-        .ballon {
+        .balloon {
             background-color: red;
             height: 200px;
             width: 200px;
-            border-radius: 100%;
+            border-radius: 50%;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="ballon"></div>
+    <div class="balloon"></div>
 
     <script>
-        const ballon = document.querySelector('.ballon');
-        let shrinkInterval = null;
+        const balloon = document.querySelector('.balloon');
+        let colors = ["red", "green", "blue"];
+        let size = 200;
+        let colorIndex = 0;
 
-        function resetSize() {
-            ballon.style.backgroundColor = "red";
-            ballon.style.height = "200px";
-            ballon.style.width = "200px";
-        }
-
-        function setRangeColor(size) {
-            if (size > 370) {
-                ballon.style.backgroundColor = "blue";
-            } else if (size > 300) {
-                ballon.style.backgroundColor = "green";
+        balloon.addEventListener("click", function() {
+            if (size < 420) {
+                size += 10;
+                colorIndex = (colorIndex + 1) % colors.length;
             } else {
-                ballon.style.backgroundColor = "red";
+                size = 200;
+                colorIndex = 0;
             }
-        }
-
-        ballon.addEventListener("click", function() {
-            
-            if (shrinkInterval !== null) {
-                clearInterval(shrinkInterval);
-                shrinkInterval = null;
-            }
-
-            let currentSize = parseInt(window.getComputedStyle(ballon).height);
-            if (currentSize < 420) {
-                let newSize = currentSize + 10;
-                ballon.style.height = newSize + "px";
-                ballon.style.width = newSize + "px";
-                setRangeColor(newSize);
-            } else {
-                resetSize();
-            }
+            updateBalloon();
         });
 
-        ballon.addEventListener("mouseleave", function() {
-            
-            if (shrinkInterval !== null) return;
-
-            shrinkInterval = setInterval(function() {
-                let currentSize = parseInt(window.getComputedStyle(ballon).height);
-                if (currentSize > 200) {
-                    let newSize = currentSize - 5;
-                    ballon.style.height = newSize + "px";
-                    ballon.style.width = newSize + "px";
-                    setRangeColor(newSize);
-                } else {
-                    resetSize();
-                    clearInterval(shrinkInterval);
-                    shrinkInterval = null;
-                }
-            });
+        balloon.addEventListener("mouseleave", function() {
+            if (size > 200) {
+                size -= 5;
+                colorIndex = (colorIndex - 1 + colors.length) % colors.length;
+            }
+            updateBalloon();
         });
 
+        function updateBalloon() {
+            balloon.style.width = size + "px";
+            balloon.style.height = size + "px";
+            balloon.style.backgroundColor = colors[colorIndex];
+        }
     </script>
 </body>
 </html>
