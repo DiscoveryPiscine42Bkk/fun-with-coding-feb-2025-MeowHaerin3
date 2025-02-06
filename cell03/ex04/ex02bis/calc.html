@@ -80,6 +80,7 @@
             align-items: center;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="calculator">
@@ -93,61 +94,63 @@
             <option value="%">%</option>
         </select>
         <input type="number" id="right" min="0" placeholder="Enter second number">
-        <button onclick="calculate()">Try me!</button>
+        <button id="calculate">Try me!</button>
     </div>
     
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close" id="closeModal">&times;</span>
             <p id="modal-text"></p>
         </div>
     </div>
 
     <script>
-        function calculate() {
-            let left = document.getElementById("left").value;
-            let right = document.getElementById("right").value;
-            let operator = document.getElementById("operator").value;
-            
-            if (left === "" || right === "" || left < 0 || right < 0) {
-                showModal("Error :(");
-                return;
+        $(document).ready(function() {
+            $('#calculate').click(function() {
+                let left = $('#left').val();
+                let right = $('#right').val();
+                let operator = $('#operator').val();
+                
+                if (left === "" || right === "" || left < 0 || right < 0) {
+                    showModal("Error :(");
+                    return;
+                }
+
+                left = parseInt(left);
+                right = parseInt(right);
+                let result;
+
+                if ((operator === '/' || operator === '%') && right === 0) {
+                    showModal("It's over 9000!");
+                    console.log("It's over 9000!");
+                    return;
+                }
+
+                switch (operator) {
+                    case '+': result = left + right; break;
+                    case '-': result = left - right; break;
+                    case '*': result = left * right; break;
+                    case '/': result = left / right; break;
+                    case '%': result = left % right; break;
+                }
+                
+                showModal("Result: " + result);
+                console.log("Result:", result);
+            });
+
+            $('#closeModal').click(function() {
+                $('#modal').hide();
+            });
+
+            function showModal(message) {
+                $('#modal-text').text(message);
+                $('#modal').show();
             }
 
-            left = parseInt(left);
-            right = parseInt(right);
-            let result;
-
-            if ((operator === '/' || operator === '%') && right === 0) {
-                showModal("It's over 9000!");
-                console.log("It's over 9000!");
-                return;
-            }
-
-            switch (operator) {
-                case '+': result = left + right; break;
-                case '-': result = left - right; break;
-                case '*': result = left * right; break;
-                case '/': result = left / right; break;
-                case '%': result = left % right; break;
-            }
-            
-            showModal("Result: " + result);
-            console.log("Result:", result);
-        }
-
-        function showModal(message) {
-            document.getElementById("modal-text").innerText = message;
-            document.getElementById("modal").style.display = "flex";
-        }
-
-        function closeModal() {
-            document.getElementById("modal").style.display = "none";
-        }
-
-        setInterval(() => {
-            showModal("Please, use me...");
-        }, 30000);
+            setInterval(function() {
+                showModal("Please, use me...");
+            }, 30000);
+        });
     </script>
 </body>
 </html>
