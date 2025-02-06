@@ -22,7 +22,8 @@ function createTodo(task, append = true) {
     let list = document.getElementById("ft_list");
     if (append) {
         list.appendChild(todoDiv);
-    } else {
+    } 
+    else {
         list.insertBefore(todoDiv, list.firstChild);
     }
 }
